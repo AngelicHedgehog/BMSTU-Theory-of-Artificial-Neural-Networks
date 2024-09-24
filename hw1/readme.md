@@ -569,7 +569,7 @@ plt.show()
 ## Графики зависимостей
 
 ![plot_accurasy](https://github.com/user-attachments/assets/540a7aaf-0f5e-478c-b4ed-70cadafe1adf)
-![plot_mse](https://github.com/user-attachments/assets/ef71914d-073f-46f3-8c73-c70f1c1cc445)
+![plot_mse](https://github.com/user-attachments/assets/6c6a8520-d54d-43cb-b02f-619e6ab158c9)
 
 
 ## Вывод программы
