@@ -2,4 +2,4 @@ pandoc \
   --pdf-engine=xelatex \
   -V 'mainfont:Liberation Serif' \
   -V 'monofont:Liberation Mono' \
-  "$1/readme.md" -o "$1/$1-report.pdf"
+  "hw$1/readme.md" -o "hw$1/ДЗ№$1_ИУ9-72_ВиленскийСД.pdf"
