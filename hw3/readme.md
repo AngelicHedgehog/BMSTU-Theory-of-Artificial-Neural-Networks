@@ -9,8 +9,8 @@
 1. Реализовать следующие методы оптимизации:
     1. `GD` - метод градиентного спуска
     2. `CG` - метод сопряженных градиентов
-        1. `F-R` - Флетчера-Ривье
-        2. `P-R` - Полана-Рибьера
+        1. `F-R` - Флетчера-Ривза
+        2. `P-R` - Полака-Рибьера
     3. `D-F-P` - квазиньютоновский метод
     4. `L-M` - метод Левенберга-Марквадрата
 2. Провести сравнительный анализ эффективности работы реализованных методов на примере функции Розенброка.
@@ -104,13 +104,17 @@ def method_CG_PR(function, x_k, k):
     grad = function.grad(x_k)
     d_k = -grad
 
-    for _ in range(k):
+    for i in range(k):
         a_k = optimal_by_golden_ratio(function.f, x_k, d_k)
         x_k = x_k + a_k * d_k
         result_path.append(x_k)
         
         grad_new = function.grad(x_k)
-        beta = np.dot(grad_new - grad, grad_new) / np.dot(grad, grad)
+
+        if i % 3 == 1:
+            beta = np.dot(grad_new, grad_new) / np.dot(grad, grad)
+        else:
+            beta = np.dot(grad_new - grad, grad_new) / np.dot(grad, grad)
 
         d_k = -grad_new + beta * d_k
         grad = grad_new
@@ -199,8 +203,8 @@ plt.show()
 ```
 
 # Сравнение методов
-![plt1](https://github.com/user-attachments/assets/2338a67a-2327-46db-9650-ed27c0aeb268)
-![plt2](https://github.com/user-attachments/assets/caf08af2-26a0-4ded-82f4-df0068cd1f0f)
+![plt1](https://github.com/user-attachments/assets/85be7df3-110c-4b6e-9f4a-1ca3ae7700a7)
+![plt2](https://github.com/user-attachments/assets/c42efb6a-e45f-4b9b-b66d-59846f30a976)
 
 # Выводы
 В результате сравнения заданных методов 1-го порядка оптимизации можно заключить, что наиболее эффективным явлется метод сопряженных градиентов Флетчера-Ривье, в то время как метод скорейшего спуска очевидно оказался наименее эффективным. Однако метод 2-го порядка, метод Левенберга-Марквадрата, на порядок быстрее сходится к минимуму по сравнению со всеми методами 1-го порядка.
